@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import formSchema from '../validation';
 import * as yup from "yup";
+import styled from 'styled-components';
 
 export default function Form(props) {
     const { initialState, setFormValues, validity, submit } = props;
@@ -17,6 +18,14 @@ export default function Form(props) {
         })
     }
     const [error, setError] = useState();
+
+    const StyledForm = styled.form`
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    `
 
     return (
         <form onSubmit={submit}>

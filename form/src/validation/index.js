@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 const requiredMessage = "This one is required";
 const minMessage = "Must be at least 6 characters";
-const termsMessage = "Must accept the terms and consitions";
+const termsMessage = "Must accept the terms and conditions";
 
 const formSchema = yup.object().shape({
     name: yup
