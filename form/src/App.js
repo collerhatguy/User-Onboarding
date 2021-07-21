@@ -5,6 +5,8 @@ import User from "./components/User";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./reset.css"
+import "./App.css"
 
 const intitialFormState = {
   name: "", 
@@ -39,17 +41,19 @@ function App() {
   }, [formValues])
   
   return (
-    <div>
+    <main>
       <Form 
         initialState={intitialFormState} 
         setFormValues={setFormValues}
         validity={validity}
         submit={submit}
       />
-      {users.map(user => 
-        <User user={user} key={user.id}/>
-      )}
-    </div>
+      <div className="user-list">
+        {users.map(user => 
+          <User user={user} key={user.id}/>
+        )}
+      </div>
+    </main>
   );
 }
 
