@@ -34,6 +34,7 @@ function App() {
         setUsers([...users, res.data])
       })
       .catch(err => console.log(err))
+      .finally(setFormValues(intitialFormState))
   } 
   useEffect(() => {
     formSchema.isValid(formValues)
@@ -43,7 +44,7 @@ function App() {
   return (
     <main>
       <Form 
-        initialState={intitialFormState} 
+        formValues={formValues} 
         setFormValues={setFormValues}
         validity={validity}
         submit={submit}

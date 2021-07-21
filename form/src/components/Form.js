@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import formSchema from '../validation';
 import * as yup from "yup";
-import styled from 'styled-components';
 
 export default function Form(props) {
-    const { initialState, setFormValues, validity, submit } = props;
+    const { formValues, setFormValues, validity, submit } = props;
     const change = evt => {
         const {type, value, name, checked } = evt.target;
         const formValue = type === "checkbox" ? checked : value;
@@ -18,14 +17,7 @@ export default function Form(props) {
         })
     }
     const [error, setError] = useState();
-
-    const StyledForm = styled.form`
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    `
+    
 
     return (
         <form onSubmit={submit}>
@@ -33,6 +25,7 @@ export default function Form(props) {
                 Name: 
                 <input 
                     onChange={change}
+                    value={formValues.name}
                     type="text"
                     name="name"
                     id="name"
@@ -42,6 +35,7 @@ export default function Form(props) {
                 Email: 
                 <input 
                     onChange={change}
+                    value={formValues.email}
                     type="email"
                     name="email"
                     id="email"
@@ -51,6 +45,7 @@ export default function Form(props) {
                 Password: 
                 <input 
                     onChange={change}
+                    value={formValues.password}
                     type="password"
                     name="password"
                     id="password"
@@ -60,6 +55,7 @@ export default function Form(props) {
                 Do you agree with the terms of service?: 
                 <input 
                     onChange={change}
+                    checked={formValues.terms}
                     type="checkbox"
                     name="terms"
                     id="terms"
