@@ -43,7 +43,15 @@ describe("form test", () => {
             .click()
             .should("be.disabled")
     })
+    it("submit verification", () => {
+        checkInput(nameInput());
+        checkInput(passwordInput());
+        emailInput()
+            .type("asjkdfkjf@kfjanwfkljwn.com");
 
+        submitInput()
+            .should("be.disabled")
+    })
 })
 const checkInput = input => {
     const value = "someStuff";
